@@ -9,7 +9,7 @@ public class Ticket {
         this.fee = fee;
     }
 
-    public BigDecimal getFee() {
+    public BigDecimal fee() {
         return fee;
     }
 }

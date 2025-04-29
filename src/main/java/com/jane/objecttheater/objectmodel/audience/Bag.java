@@ -19,8 +19,14 @@ public class Bag {
         return invitation != null;
     }
 
-    public void setTicket(Ticket ticket) {
+    public BigDecimal hold(Ticket ticket) {
+        if (hasInvitation()) {
+            this.ticket = ticket;
+            return BigDecimal.ZERO;
+        }
         this.ticket = ticket;
+        this.minusAmount(ticket.fee());
+        return ticket.fee();
     }
 
     public Ticket getTicket() {
