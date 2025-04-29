@@ -21,7 +21,7 @@ public class TheaterTest {
 
     @BeforeEach
     void setUp() {
-        ticket = new Ticket(BigDecimal.valueOf(10000L));
+        ticket = new Ticket(BigDecimal.valueOf(5000L));
         ticketOffice = new TicketOffice(BigDecimal.ZERO, ticket);
         ticketSeller = new TicketSeller(ticketOffice);
         theater = new Theater(ticketSeller);
@@ -38,9 +38,9 @@ public class TheaterTest {
         theater.enter(audience);
 
         // then
-        assertThat(audience.getBag().hasInvitation()).isTrue();
-        assertThat(audience.getBag().getAmount()).isEqualTo(BigDecimal.valueOf(5000L)); // 돈 그대로
-        assertThat(audience.getBag().getTicket()).isNotNull(); // 티켓 있음
+        assertThat(bag.hasInvitation()).isTrue();
+        assertThat(bag.getAmount()).isEqualTo(BigDecimal.valueOf(5000L)); // 관객 돈 그대로
+        assertThat(bag.getTicket()).isNotNull(); // 티켓 있음
         assertThat(ticketOffice.getAmount()).isEqualTo(BigDecimal.ZERO); // 매표소 돈 증가 없음
     }
 
@@ -54,8 +54,8 @@ public class TheaterTest {
         theater.enter(audience);
 
         // then
-        assertThat(audience.getBag().getAmount()).isEqualTo(BigDecimal.ZERO); // 티켓 가격만큼 차감
-        assertThat(audience.getBag().getTicket()).isNotNull(); // 티켓 있음
-        assertThat(ticketOffice.getAmount()).isEqualTo(BigDecimal.valueOf(10000L)); // 매표소 돈 증가
+        assertThat(bag.getAmount()).isEqualTo(BigDecimal.valueOf(5000L)); // 1만원 - 5천원
+        assertThat(bag.getTicket()).isNotNull(); // 티켓 있음
+        assertThat(ticketOffice.getAmount()).isEqualTo(BigDecimal.valueOf(5000L)); // 매표소 돈 5천원 증가
     }
 }
