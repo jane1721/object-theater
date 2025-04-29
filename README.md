@@ -44,6 +44,7 @@
 
 - [01 - 절차지향 구조 구현 및 테스트](./docs/01-procedural.md)
 - [02 - 객체 중심 구조 리팩토링](./docs/02-object-model.md)
+- [02-1 - 객체 중심 구조에서의 변경 용이성](./docs/02-changeability.md)
 
 ---
 
